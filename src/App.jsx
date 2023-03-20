@@ -23,7 +23,7 @@ function App() {
 
     return (
         <div className="">
-            <Header title="React crud fullstack" />
+            <Header title="lar-act crud fullstack" />
             <RouterProvider router={router} />
         </div>
     );

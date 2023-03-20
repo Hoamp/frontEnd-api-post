@@ -2,15 +2,18 @@ const Create = () => {
     const handleSubmit = (el) => {
         el.preventDefault();
 
+        // simpan semua inputan user
         const title = el.target.title.value;
         const description = el.target.description.value;
         const tags = el.target.tags.value;
         const author = el.target.author.value;
 
+        // jalankan fungsi storeData dengan parameter di atas
         storeData(title, description, tags, author);
     };
 
     const storeData = async (title, description, tags, author) => {
+        // simpan menjadi sebuah objek
         const dataPost = {
             title,
             description,
@@ -18,6 +21,7 @@ const Create = () => {
             author,
         };
 
+        // store data ke api
         const storeData = await fetch("http://localhost:8000/api/posts", {
             method: "POST",
             body: JSON.stringify(dataPost),
@@ -26,6 +30,7 @@ const Create = () => {
             },
         })
             .then((res) => res.json())
+            // kembalikan pesan
             .then((res) => alert(res.message));
     };
 
@@ -38,25 +43,25 @@ const Create = () => {
                         <label htmlFor="" className="block">
                             Title
                         </label>
-                        <input type="text" className="border px-4 py-1 border-sky-200 focus:ring-sky-300 focus:ring focus:outline-none" name="title" />
+                        <input type="text" className="border px-4 py-1 border-sky-200 focus:ring-sky-300 focus:ring focus:outline-none" name="title" placeholder="Title" />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="" className="block">
                             Description
                         </label>
-                        <input type="text" className="border px-4 py-1 border-sky-200 focus:ring-sky-300 focus:ring focus:outline-none" name="description" />
+                        <input type="text" className="border px-4 py-1 border-sky-200 focus:ring-sky-300 focus:ring focus:outline-none" name="description" placeholder="Description" />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="" className="block">
                             Author
                         </label>
-                        <input type="text" className="border px-4 py-1 border-sky-200 focus:ring-sky-300 focus:ring focus:outline-none" name="author" />
+                        <input type="text" className="border px-4 py-1 border-sky-200 focus:ring-sky-300 focus:ring focus:outline-none" name="author" placeholder="Author" />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="" className="block">
                             Tags
                         </label>
-                        <input type="text" className="border px-4 py-1 border-sky-200 focus:ring-sky-300 focus:ring focus:outline-none" name="tags" />
+                        <input type="text" className="border px-4 py-1 border-sky-200 focus:ring-sky-300 focus:ring focus:outline-none" name="tags" placeholder="Tags" />
                     </div>
 
                     <div className="text-center">
